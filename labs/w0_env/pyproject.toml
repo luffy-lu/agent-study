@@ -1,0 +1,25 @@
+[project]
+name = "w0-env"
+version = "0.1.0"
+requires-python = ">=3.12"
+description = "W0：环境自检（Python / 依赖 / API 连通性 / 本地服务）"
+dependencies = [
+    "httpx>=0.28",
+    "python-dotenv>=1.0",
+    "pydantic>=2.9",
+    "openai>=1.50",
+    "rich>=13.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0",
+    "ruff>=0.16",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

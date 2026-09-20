@@ -9,9 +9,9 @@
 
 | 周 | 主题 | 状态 | Gate 是否通过 | 实际投入 | 备注 |
 |---|---|---|---|---|---|
-| W0 | 环境 + Python 突击 | ⬜ 未开始 | — | — | |
-| W1 | 大模型底层原理 | ⬜ | ⬜ Gate1 | — | |
-| W2 | Prompt + RAG | ⬜ | ⬜ Gate2 | — | |
+| W0 | 环境 + Python 突击 | ✅ 完成 | — | — | 环境自检全部通过；30 道 Python 自测题待补 |
+| W1 | 大模型底层原理 | 🟡 进行中 | ⬜ Gate1 | — | 原理层已完成（30 项测试通过、梯度校验全过）；API 层待做 |
+| W2 | Prompt + RAG | ⬜ 未开始 | ⬜ Gate2 | — | **开工前必须补 Embedding 配置** |
 | W3 | Agent 内核 | ⬜ | ⬜ Gate3 | — | |
 | W4 | MCP + 多智能体 | ⬜ | ⬜ Gate4 | — | |
 | W5 | 项目：骨架+检索+内核 | ⬜ | — | — | |
@@ -20,6 +20,22 @@
 | W8 | 简历 + 面试 | ⬜ | 可投递 | — | |
 
 状态图例：⬜ 未开始 ｜ 🟡 进行中 ｜ ✅ 完成 ｜ 🔴 延期
+
+### 环境就绪状态（W0 自检实测）
+
+| 项 | 状态 | 备注 |
+|---|---|---|
+| Python 3.12.14（uv only-managed） | ✅ | `uv run python` 指向 `.venv`，非系统 3.9.6 |
+| 依赖 httpx / openai / pydantic / dotenv / pytest / rich | ✅ | 6/6 |
+| uv / docker / node / git | ✅ | |
+| 主模型 API（DeepSeek） | ✅ | 非流式 + 流式（12 分片）均通 |
+| Embedding | ❌ **待配置** | `BASE_URL` / `MODEL` / `KEY` 均为空 → **W2 阻塞项** |
+| 备用模型 | ❌ 待配置 | `BACKUP_API_KEY` 为空 |
+| Langfuse | ❌ 待配置 | W4 才需要 |
+| PostgreSQL / Redis / Qdrant / Ollama | ⚠️ 未启动 | W2 前起 Docker 容器即可 |
+| 30 道 Python 自测题 | ⬜ 未做 | 见 `WEEK0_SETUP.md` 第三节 |
+
+
 
 ---
 
